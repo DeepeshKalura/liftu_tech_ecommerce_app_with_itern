@@ -4,18 +4,30 @@ Welcome to the LiftUp E-Commerce Application! This project is a test application
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Getting Started](#getting-started)
-3. [Project Structure](#project-structure)
+2. [Project Structure](#project-structure)
+3. [Package Used](#package-used)
 4. [State Management](#state-management)
 5. [API Integration](#api-integration)
 6. [Optional Features](#optional-features)
-7. [Testing](#testing)
-8. [User Experience](#user-experience)
-9. [Important Messages](#important-messages)
+7. [Getting Started](#getting-started)
+8. [Testing](#testing)
+9. [User Experience](#user-experience)
+10. [Important Messages](#important-messages)
 
 ## Introduction
 
 The LiftUp E-Commerce Application is a test project that aims to demonstrate the best practices in developing a high-quality e-commerce application. It emphasizes code quality, efficient state management, and seamless integration with external APIs.
+
+
+
+## Project Structure
+I am going to update, i am currenlty using MVC architecture.
+
+## Package Used
+1. provider
+2. http
+3. flutter_svg
+4. eva_icons_flutter
 
 
 
