@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       theme: GlobalTheme.themeData,
       onGenerateRoute: Routes.onGenerative,
       initialRoute: RoutesName.homeScreen,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
