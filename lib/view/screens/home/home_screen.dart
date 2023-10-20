@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+// import 'package:provider/provider.dart';
+
+// import '../../../controller/api/fake_api.dart';
+import 'widget/hero_container_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -12,8 +17,25 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
+  final List<String> categories = [
+    "All Product",
+    "SmartPhones",
+    "Wearable",
+    "Books",
+    "Laptops",
+    "Accessories"
+  ];
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Provider.of<FakeAPI>(context).getHeroProducts();
+    // final data = Provider.of<FakeAPI>(context).heroProducts;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -87,7 +109,125 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-            )
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Stack(
+              children: [
+                CarouselSlider(
+                  items: [
+                    HeroContainerWidget(
+                      image:
+                          // data[0].imageUrl ??
+                          "assets/pictures/hero/pixel.png",
+                      title:
+                          //  data[0].subtitle
+                          // ??
+                          "Get Pixel 7 and\nPixel 7 pro",
+                      subtitle: 'Full Speed ahead',
+                      color: Color(
+                        int.parse(
+                          // data[0].color ??
+                          // "0x"
+                          "FFF8E4DD",
+                          radix: 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                  options: CarouselOptions(
+                    autoPlay: false,
+                    initialPage: 0,
+                    viewportFraction: 1,
+                    enableInfiniteScroll: true,
+                  ),
+                ),
+                const Positioned(
+                  bottom: 20,
+                  left: 35,
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 10,
+                        backgroundColor: Color(0xFFABA9A9),
+                      ),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      CircleAvatar(
+                        radius: 10,
+                        backgroundColor: Color(0xFF1E1E1E),
+                      ),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      CircleAvatar(
+                        radius: 10,
+                        backgroundColor: Color(0xFFABA9A9),
+                      ),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      CircleAvatar(
+                        radius: 10,
+                        backgroundColor: Color(0xFFABA9A9),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 45,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return Row(
+                    children: [
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStateProperty.all(0),
+                          backgroundColor: MaterialStateProperty.all(
+                            const Color(
+                              0xFF1C2023,
+                            ),
+                          ),
+                          fixedSize: MaterialStateProperty.all(
+                            const Size(125, 40),
+                          ),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Center(
+                          child: Text(
+                            categories[index],
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .copyWith(
+                                  fontSize: 12,
+                                  color: Colors.white,
+                                ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+                itemCount: categories.length,
+              ),
+            ),
           ],
         ),
       ),
