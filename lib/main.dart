@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'controller/navigation/routes.dart';
 import 'controller/navigation/routes_name.dart';
+import 'view/global/global_theme.dart';
 
 void main() {
   runApp(
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: GlobalTheme.themeData,
       onGenerateRoute: Routes.onGenerative,
       initialRoute: RoutesName.homeScreen,
     );
