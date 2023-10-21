@@ -35,7 +35,7 @@ class Product {
         title: data['title'] as String?,
         price: data['price'] as int?,
         description: data['description'] as String?,
-        images: data['images'] as List<String>?,
+        images: (data['images'] as List<dynamic>).cast<String>(),
         creationAt: data['creationAt'] == null
             ? null
             : DateTime.parse(data['creationAt'] as String),
