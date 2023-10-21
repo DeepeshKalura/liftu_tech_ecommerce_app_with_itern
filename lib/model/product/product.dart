@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
-import 'category.dart';
+import '../category.dart';
 
 class Product {
   int? id;

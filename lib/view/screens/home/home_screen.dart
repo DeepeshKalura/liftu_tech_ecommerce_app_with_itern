@@ -4,7 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:provider/provider.dart';
 
 // import '../../../controller/api/fake_api.dart';
-import '../../../model/product/category.dart';
+import '../../../model/category.dart';
 import '../../../model/product/product.dart';
 import '../../global/global_colors.dart';
 import 'widget/hero_container_widget.dart';
