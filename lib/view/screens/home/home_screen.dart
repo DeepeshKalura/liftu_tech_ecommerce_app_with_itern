@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:provider/provider.dart';
 
 // import '../../../controller/api/fake_api.dart';
+import '../../../controller/navigation/routes_name.dart';
 import '../../../model/category.dart';
 import '../../../model/product/product.dart';
 import '../../global/global_colors.dart';
@@ -87,6 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           forceMaterialTransparency: true,
+          automaticallyImplyLeading: false,
           title: Row(
             children: [
               const CircleAvatar(
@@ -313,17 +315,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context, index) {
                     final width = MediaQuery.of(context).size.width * 0.4;
                     const height = 200.0;
-                    return ProductCardWidget(
-                      image: product[index].images?[0] ??
-                          "assets/pictures/phoneProfile.png",
-                      title: product[index].title ??
-                          "Google Pixel 7 and Pixel 7 Pro",
-                      subtitle:
-                          product[index].description ?? "Full Speed Ahead",
-                      price: '${product[index].price}',
-                      color: GlobalColors.randomColor(index),
-                      height: height,
-                      width: width,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, RoutesName.detailScreen,
+                            arguments: {
+                              "product": product[index],
+                              "index": index,
+                            });
+                      },
+                      child: ProductCardWidget(
+                        image: product[index].images?[0] ??
+                            "assets/pictures/phoneProfile.png",
+                        title: product[index].title ??
+                            "Google Pixel 7 and Pixel 7 Pro",
+                        subtitle:
+                            product[index].description ?? "Full Speed Ahead",
+                        price: '${product[index].price}',
+                        color: GlobalColors.randomColor(index),
+                        height: height,
+                        width: width,
+                      ),
                     );
                   }),
             ),
