@@ -50,20 +50,25 @@ class ProductGridWidget extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: height * 0.3,
+            top: height * 0.35,
             left: width * 0.25,
-            child: Hero(
-              tag: id,
-              child: Image.network(
-                image,
-                height: height * 0.6,
-                width: width * 0.5,
-                fit: BoxFit.contain,
+            child: Container(
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Hero(
+                tag: id,
+                child: Image.network(
+                  image,
+                  height: height * 0.5,
+                  width: width * 0.5,
+                ),
               ),
             ),
           ),
           Positioned(
-            bottom: 0,
+            top: height * 0.9,
             left: 0,
             child: Padding(
               padding: const EdgeInsets.only(
@@ -74,7 +79,7 @@ class ProductGridWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: width * 0.5,
+                    width: width * 0.6,
                     child: Text(
                       title,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -82,7 +87,8 @@ class ProductGridWidget extends StatelessWidget {
                             height: 1.1,
                             letterSpacing: -0.29,
                           ),
-                      maxLines: 3,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   SizedBox(
@@ -97,31 +103,27 @@ class ProductGridWidget extends StatelessWidget {
                       maxLines: 2,
                     ),
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        '\$ $price',
-                        style:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                      ),
-                      SizedBox(
-                        width: width * 0.5,
-                      ),
-                      SizedBox(
-                        child: SvgPicture.asset(
-                          'assets/icons/add.svg',
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            left: 10,
+            child: Text(
+              '\$ $price',
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            right: 10,
+            child: SizedBox(
+              child: SvgPicture.asset(
+                'assets/icons/add.svg',
               ),
             ),
           ),
