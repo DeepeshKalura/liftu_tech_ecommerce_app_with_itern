@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-// import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 // import '../../../controller/api/fake_api.dart';
 import '../../../controller/navigation/routes_name.dart';
+import '../../../controller/view/home_screen_controller.dart';
 import '../../../model/category.dart';
 import '../../../model/product/product.dart';
 import '../../global/global_colors.dart';
@@ -82,6 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // final controller = Provider.of<HomeScreenController>(context);
     // Provider.of<FakeAPI>(context).getHeroProducts();
     // final data = Provider.of<FakeAPI>(context).heroProducts;
     return Scaffold(
@@ -180,71 +182,121 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 20,
             ),
-            Stack(
-              children: [
-                CarouselSlider(
-                  items: [
-                    HeroContainerWidget(
-                      image:
-                          // data[0].imageUrl ??
-                          "assets/pictures/hero/HeroPhoneImage.png",
-                      title:
-                          //  data[0].subtitle
-                          // ??
-                          "Get Pixel 7 and\nPixel 7 pro",
-                      subtitle: 'Full Speed ahead',
-                      color: Color(
-                        int.parse(
-                          // data[0].color ??
-                          // "0x"
-                          "FFF8E4DD",
-                          radix: 16,
+            Consumer(builder: (context, HomeScreenController controller, _) {
+              return Stack(
+                children: [
+                  CarouselSlider(
+                    items: [
+                      HeroContainerWidget(
+                        image:
+                            // data[0].imageUrl ??
+                            "assets/pictures/hero/HeroPhoneImage.png",
+                        title:
+                            //  data[0].subtitle
+                            // ??
+                            "Get Pixel 7 and\nPixel 7 pro",
+                        subtitle: 'Full Speed ahead',
+                        color: Color(
+                          int.parse(
+                            // data[0].color ??
+                            // "0x"
+                            "FFF8E4DD",
+                            radix: 16,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                  options: CarouselOptions(
-                    autoPlay: false,
-                    initialPage: 0,
-                    viewportFraction: 1,
-                    enableInfiniteScroll: true,
-                  ),
-                ),
-                const Positioned(
-                  bottom: 20,
-                  left: 35,
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFFABA9A9),
+                      const HeroContainerWidget(
+                        image:
+                            // data[0].imageUrl ??
+                            "assets/pictures/hero/HeroPhoneImage.png",
+                        title:
+                            //  data[0].subtitle
+                            // ??
+                            "Get Pixel 7 and\nPixel 7 pro",
+                        subtitle: 'Full Speed ahead',
+                        color: Color(GlobalColors.orange),
                       ),
-                      SizedBox(
-                        width: 16,
+                      const HeroContainerWidget(
+                        image:
+                            // data[0].imageUrl ??
+                            "assets/pictures/hero/HeroPhoneImage.png",
+                        title:
+                            //  data[0].subtitle
+                            // ??
+                            "Get Pixel 7 and\nPixel 7 pro",
+                        subtitle: 'Full Speed ahead',
+                        color: Color(
+                          GlobalColors.green,
+                        ),
                       ),
-                      CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFF1E1E1E),
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFFABA9A9),
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFFABA9A9),
+                      const HeroContainerWidget(
+                        image:
+                            // data[0].imageUrl ??
+                            "assets/pictures/hero/HeroPhoneImage.png",
+                        title:
+                            //  data[0].subtitle
+                            // ??
+                            "Get Pixel 7 and\nPixel 7 pro",
+                        subtitle: 'Full Speed ahead',
+                        color: Color(
+                          GlobalColors.red,
+                        ),
                       ),
                     ],
+                    options: CarouselOptions(
+                      onPageChanged: (index, reason) {
+                        controller.changeIndex(index);
+                      },
+                      autoPlay: false,
+                      initialPage: 0,
+                      viewportFraction: 1,
+                      enableInfiniteScroll: true,
+                    ),
                   ),
-                )
-              ],
-            ),
+                  Positioned(
+                    bottom: 20,
+                    left: 35,
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: controller.currentIndex == 0
+                              ? const Color(0xFF1E1E1E)
+                              : const Color(0xFFABA9A9),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: controller.currentIndex == 1
+                              ? const Color(0xFF1E1E1E)
+                              : const Color(0xFFABA9A9),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: controller.currentIndex == 2
+                              ? const Color(0xFF1E1E1E)
+                              : const Color(0xFFABA9A9),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: controller.currentIndex == 3
+                              ? const Color(0xFF1E1E1E)
+                              : const Color(0xFFABA9A9),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              );
+            }),
             const SizedBox(
               height: 20,
             ),
