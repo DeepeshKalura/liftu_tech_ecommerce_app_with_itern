@@ -84,9 +84,11 @@ class HeroContainerWidget extends StatelessWidget {
           ),
           Positioned(
             bottom: 0,
-            right: -MediaQuery.of(context).size.width * 0.2,
+            right: 0,
             child: Image.asset(
               image,
+              width: MediaQuery.of(context).size.width * 0.4,
+              fit: BoxFit.fitHeight,
             ),
           ),
         ],
