@@ -4,7 +4,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:provider/provider.dart';
 
 // import '../../../controller/api/fake_api.dart';
+import '../../../model/product/category.dart';
+import '../../../model/product/product.dart';
+import '../../global/global_colors.dart';
 import 'widget/hero_container_widget.dart';
+import 'widget/product_card_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -24,6 +28,49 @@ class _HomeScreenState extends State<HomeScreen> {
     "Books",
     "Laptops",
     "Accessories"
+  ];
+
+  final List<Product> product = [
+    Product(
+      id: 1,
+      title: "Google Pixel 7 and Pixel 7 Pro",
+      price: 999,
+      description: "Full Speed Ahead",
+      images: [
+        "assets/pictures/phoneProfile.png",
+        "assets/pictures/phoneProfile.png",
+        "assets/pictures/phoneProfile.png",
+      ],
+      creationAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+      category: Category(
+        id: 1,
+        name: "SmartPhones",
+        image: "assets/pictures/phoneProfile.png",
+        creationAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+      ),
+    ),
+    Product(
+      id: 2,
+      title: "I phone 14 pro",
+      price: 999,
+      description: "A magic new way to interact with the iphone the ",
+      images: [
+        "assets/pictures/phoneProfile.png",
+        "assets/pictures/phoneProfile.png",
+        "assets/pictures/phoneProfile.png",
+      ],
+      creationAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+      category: Category(
+        id: 1,
+        name: "SmartPhones",
+        image: "assets/pictures/phoneProfile.png",
+        creationAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+      ),
+    ),
   ];
 
   @override
@@ -51,18 +98,20 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 width: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Hello,',
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                  Text(
-                    'Krishna SN',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ],
+              SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Hello,',
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                    Text(
+                      'Krishna SN',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -227,6 +276,56 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 itemCount: categories.length,
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    "New Arrival",
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontSize: 24,
+                          color: Colors.black,
+                        ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15, right: 10),
+                  child: Text(
+                    "See All",
+                    style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFF979599),
+                        ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 210,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: product.length,
+                  itemBuilder: (context, index) {
+                    final width = MediaQuery.of(context).size.width * 0.4;
+                    const height = 200.0;
+                    return ProductCardWidget(
+                      image: product[index].images?[0] ??
+                          "assets/pictures/phoneProfile.png",
+                      title: product[index].title ??
+                          "Google Pixel 7 and Pixel 7 Pro",
+                      subtitle:
+                          product[index].description ?? "Full Speed Ahead",
+                      price: '${product[index].price}',
+                      color: GlobalColors.randomColor(index),
+                      height: height,
+                      width: width,
+                    );
+                  }),
             ),
           ],
         ),
