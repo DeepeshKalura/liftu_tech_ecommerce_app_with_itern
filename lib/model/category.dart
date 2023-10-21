@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 
 class Category {
-  int? id;
-  String? name;
-  String? image;
-  DateTime? creationAt;
-  DateTime? updatedAt;
+  final int? id;
+  final String? name;
+  final String? image;
+  final DateTime? creationAt;
+  final DateTime? updatedAt;
 
-  Category({
+  const Category({
     this.id,
     this.name,
     this.image,
@@ -19,7 +19,7 @@ class Category {
 
   @override
   String toString() {
-    return 'Category(id: $id, name: $name, image: $image, creationAt: $creationAt, updatedAt: $updatedAt)';
+    return 'Categories(id: $id, name: $name, image: $image, creationAt: $creationAt, updatedAt: $updatedAt)';
   }
 
   factory Category.fromMap(Map<String, dynamic> data) => Category(
