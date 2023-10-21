@@ -17,7 +17,7 @@ class ProductListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Yes iam building");
+    // print("Yes iam building");
     // final prdList = Provider.of<HomeScreenController>(context).search;
     return Scaffold(
       appBar: AppBar(

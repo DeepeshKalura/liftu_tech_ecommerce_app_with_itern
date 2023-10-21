@@ -9,6 +9,15 @@ class DetailScreen extends StatelessWidget {
   final Product product;
   final int index;
 
+  bool isAssets() {
+    String value = product.images?[0] ?? "assets/pictures/phoneProfile.png";
+    if (value.contains("assets")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     String description = product.description ??
@@ -47,16 +56,6 @@ class DetailScreen extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            Positioned(
-              left: MediaQuery.of(context).size.width / 2 - 100,
-              bottom: MediaQuery.of(context).size.height / 2 + 30,
-              child: SizedBox(
-                child: Image.asset(
-                  product.images?[0] ?? "assets/pictures/phoneProfile.png",
-                  scale: 0.45,
-                ),
-              ),
-            ),
             Positioned(
               left: 15,
               bottom: 50,
@@ -150,7 +149,7 @@ class DetailScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      width: 45,
+                      width: 50,
                       height: 50,
                       decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
@@ -161,14 +160,38 @@ class DetailScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            product.images?[0] ??
-                                "assets/pictures/phoneProfile.png",
-                            scale: 3.0,
-                          ),
+                          if (isAssets())
+                            Container(
+                              clipBehavior: Clip.antiAlias,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Image.asset(
+                                product.images?[0] ??
+                                    "assets/pictures/phoneProfile.png",
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
+                          if (!isAssets())
+                            Container(
+                              clipBehavior: Clip.antiAlias,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Image.network(
+                                product.images?[0] ??
+                                    "https://i.imgur.com/5mPmJYO.jpeg",
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
                         ],
                       ),
                     ),
@@ -176,7 +199,7 @@ class DetailScreen extends StatelessWidget {
                       width: 40,
                     ),
                     Container(
-                      width: 45,
+                      width: 50,
                       height: 50,
                       decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
@@ -187,14 +210,38 @@ class DetailScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            product.images?[0] ??
-                                "assets/pictures/phoneProfile.png",
-                            scale: 3.0,
-                          ),
+                          if (isAssets())
+                            Container(
+                              clipBehavior: Clip.antiAlias,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Image.asset(
+                                product.images?[0] ??
+                                    "assets/pictures/phoneProfile.png",
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
+                          if (!isAssets())
+                            Container(
+                              clipBehavior: Clip.antiAlias,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Image.network(
+                                product.images?[0] ??
+                                    "https://i.imgur.com/5mPmJYO.jpeg",
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
                         ],
                       ),
                     ),
@@ -202,7 +249,7 @@ class DetailScreen extends StatelessWidget {
                       width: 40,
                     ),
                     Container(
-                      width: 45,
+                      width: 50,
                       height: 50,
                       decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
@@ -213,14 +260,38 @@ class DetailScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            product.images?[0] ??
-                                "assets/pictures/phoneProfile.png",
-                            scale: 3.0,
-                          ),
+                          if (isAssets())
+                            Container(
+                              clipBehavior: Clip.antiAlias,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Image.asset(
+                                product.images?[0] ??
+                                    "assets/pictures/phoneProfile.png",
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
+                          if (!isAssets())
+                            Container(
+                              clipBehavior: Clip.antiAlias,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Image.network(
+                                product.images?[0] ??
+                                    "https://i.imgur.com/5mPmJYO.jpeg",
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
                         ],
                       ),
                     ),
@@ -228,7 +299,7 @@ class DetailScreen extends StatelessWidget {
                       width: 40,
                     ),
                     Container(
-                      width: 45,
+                      width: 50,
                       height: 50,
                       decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
@@ -239,19 +310,80 @@ class DetailScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset(
-                            product.images?[0] ??
-                                "assets/pictures/phoneProfile.png",
-                            scale: 3.0,
-                          ),
+                          if (isAssets())
+                            Container(
+                              clipBehavior: Clip.antiAlias,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Image.asset(
+                                product.images?[0] ??
+                                    "assets/pictures/phoneProfile.png",
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
+                          if (!isAssets())
+                            Container(
+                              clipBehavior: Clip.antiAlias,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Image.network(
+                                product.images?[0] ??
+                                    "https://i.imgur.com/5mPmJYO.jpeg",
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
                         ],
                       ),
                     ),
                   ],
                 ),
+              ),
+            ),
+            Positioned(
+              left: MediaQuery.of(context).size.width / 2 -
+                  MediaQuery.of(context).size.width / 4 +
+                  MediaQuery.of(context).size.width / 8 -
+                  MediaQuery.of(context).size.width / 16,
+              top: 50,
+              child: SizedBox(
+                child: isAssets()
+                    ? Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Image.asset(
+                          product.images?[0] ??
+                              "assets/pictures/phoneProfile.png",
+                        ),
+                      )
+                    : Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Image.network(
+                          product.images?[0] ??
+                              "https://i.imgur.com/5mPmJYO.jpeg",
+                          width: MediaQuery.of(context).size.width / 2 - 25,
+                        ),
+                      ),
               ),
             ),
           ],

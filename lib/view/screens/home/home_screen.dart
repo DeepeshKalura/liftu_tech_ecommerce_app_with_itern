@@ -23,14 +23,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
-  final List<String> categories = [
-    "All Product",
-    "SmartPhones",
-    "Wearable",
-    "Books",
-    "Laptops",
-    "Accessories"
-  ];
+
+  @override
+  void initState() {
+    intialCategories();
+    super.initState();
+  }
+
+  Future<void> intialCategories() async {
+    final controller =
+        Provider.of<HomeScreenController>(context, listen: false);
+    controller.changeLoading();
+    await controller.getAllProducts();
+    controller.changeLoading();
+  }
 
   final List<Product> product = [
     Product(
@@ -358,7 +364,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPressed: () {},
                               child: Center(
                                 child: Text(
-                                  categories[index],
+                                  controller.categories[index].name ??
+                                      "Product",
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelMedium!
@@ -372,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         );
                       },
-                      itemCount: categories.length,
+                      itemCount: controller.categories.length,
                     ),
                   ),
                   Row(
@@ -391,13 +398,30 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 15, right: 10),
-                        child: Text(
-                          "See All",
-                          style:
-                              Theme.of(context).textTheme.labelMedium!.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: const Color(0xFF979599),
-                                  ),
+                        child: TextButton(
+                          onPressed: () async {
+                            controller.changeLoading();
+                            await controller.getAllProducts();
+                            controller.changeLoading();
+                            Navigator.pushNamed(
+                              context,
+                              RoutesName.productListScreen,
+                              arguments: {
+                                "query": "New Arrival",
+                                "prdList": controller.allProducts,
+                              },
+                            );
+                          },
+                          child: Text(
+                            "See All",
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xFF979599),
+                                ),
+                          ),
                         ),
                       ),
                     ],
