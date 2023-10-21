@@ -50,17 +50,19 @@ class ProductCardWidget extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 0,
+            top: 15,
             left: width * 0.25,
             child: Hero(
               tag: id,
               child: Image.asset(
                 image,
+                width: width * 0.5,
+                height: height * 0.5,
               ),
             ),
           ),
           Positioned(
-            bottom: 0,
+            top: height * 0.6,
             left: 0,
             child: Padding(
               padding: const EdgeInsets.only(
@@ -71,7 +73,7 @@ class ProductCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: width * 0.5,
+                    width: width * 0.6,
                     child: Text(
                       title,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -79,7 +81,8 @@ class ProductCardWidget extends StatelessWidget {
                             height: 1.1,
                             letterSpacing: -0.29,
                           ),
-                      maxLines: 3,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   SizedBox(
@@ -91,34 +94,33 @@ class ProductCardWidget extends StatelessWidget {
                             fontSize: 12,
                             color: const Color(0xFF979599),
                           ),
-                      maxLines: 2,
+                      maxLines: 1,
                     ),
                   ),
                   const SizedBox(
                     height: 5,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        '\$ $price',
-                        style:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                      ),
-                      SizedBox(
-                        width: width * 0.5,
-                      ),
-                      SizedBox(
-                        child: SvgPicture.asset(
-                          'assets/icons/add.svg',
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            left: 10,
+            child: Text(
+              '\$ $price',
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            right: 10,
+            child: SizedBox(
+              child: SvgPicture.asset(
+                'assets/icons/add.svg',
               ),
             ),
           ),

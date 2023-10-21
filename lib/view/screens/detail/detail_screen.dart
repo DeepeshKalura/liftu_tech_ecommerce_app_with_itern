@@ -57,6 +57,50 @@ class DetailScreen extends StatelessWidget {
         body: Stack(
           children: [
             Positioned(
+              left: MediaQuery.of(context).size.width / 2 -
+                  MediaQuery.of(context).size.width / 4 +
+                  MediaQuery.of(context).size.width / 8 -
+                  MediaQuery.of(context).size.width / 16,
+              top: 0,
+              child: SizedBox(
+                child: isAssets()
+                    ? Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Hero(
+                          tag: product.id ?? 0,
+                          child: Image.asset(
+                            product.images?[0] ??
+                                "assets/pictures/phoneProfile.png",
+                            width: MediaQuery.of(context).size.width / 3 + 10,
+                          ),
+                        ),
+                      )
+                    : Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Hero(
+                          tag: product.id ?? 0,
+                          child: Image.network(
+                            product.images?[0] ??
+                                "https://i.imgur.com/5mPmJYO.jpeg",
+                            width: MediaQuery.of(context).size.width / 2 + 25,
+                          ),
+                        ),
+                      ),
+              ),
+            ),
+            Positioned(
               left: 15,
               bottom: 50,
               child: Container(
@@ -97,7 +141,7 @@ class DetailScreen extends StatelessWidget {
                         fontSize: 32,
                         fontWeight: FontWeight.w700,
                       ),
-                  maxLines: 2,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -350,49 +394,6 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-            ),
-            Positioned(
-              left: MediaQuery.of(context).size.width / 2 -
-                  MediaQuery.of(context).size.width / 4 +
-                  MediaQuery.of(context).size.width / 8 -
-                  MediaQuery.of(context).size.width / 16,
-              top: 50,
-              child: SizedBox(
-                child: isAssets()
-                    ? Container(
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Hero(
-                          tag: product.id ?? 0,
-                          child: Image.asset(
-                            product.images?[0] ??
-                                "assets/pictures/phoneProfile.png",
-                          ),
-                        ),
-                      )
-                    : Container(
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Hero(
-                          tag: product.id ?? 0,
-                          child: Image.network(
-                            product.images?[0] ??
-                                "https://i.imgur.com/5mPmJYO.jpeg",
-                            width: MediaQuery.of(context).size.width / 2 - 25,
-                          ),
-                        ),
-                      ),
               ),
             ),
           ],

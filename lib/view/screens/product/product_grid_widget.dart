@@ -49,9 +49,9 @@ class ProductGridWidget extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Center(
-            // top: 0,
-            // left: width * 0.25,
+          Positioned(
+            top: height * 0.3,
+            left: width * 0.25,
             child: Hero(
               tag: id,
               child: Image.network(
