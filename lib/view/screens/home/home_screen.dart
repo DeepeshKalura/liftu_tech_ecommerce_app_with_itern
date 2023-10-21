@@ -100,20 +100,18 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 width: 10,
               ),
-              SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Hello,',
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                    Text(
-                      'Krishna SN',
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                  ],
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Hello,',
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                  Text(
+                    'Krishna SN',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ],
               ),
             ],
           ),
@@ -134,211 +132,213 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 20,
-                right: 10,
-                left: 20,
-                bottom: 2,
-              ),
-              child: TextField(
-                controller: _searchController,
-                decoration: InputDecoration(
-                  hintText: 'Search for brand..',
-                  fillColor: Colors.grey[200] ?? Colors.grey,
-                  hintStyle: Theme.of(context).textTheme.labelMedium,
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    color: Colors.grey,
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.grey[500] ?? Colors.grey),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 20,
+                  right: 10,
+                  left: 20,
+                  bottom: 2,
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Stack(
-              children: [
-                CarouselSlider(
-                  items: [
-                    HeroContainerWidget(
-                      image:
-                          // data[0].imageUrl ??
-                          "assets/pictures/hero/pixel.png",
-                      title:
-                          //  data[0].subtitle
-                          // ??
-                          "Get Pixel 7 and\nPixel 7 pro",
-                      subtitle: 'Full Speed ahead',
-                      color: Color(
-                        int.parse(
-                          // data[0].color ??
-                          // "0x"
-                          "FFF8E4DD",
-                          radix: 16,
-                        ),
-                      ),
+                child: TextField(
+                  controller: _searchController,
+                  decoration: InputDecoration(
+                    hintText: 'Search for brand..',
+                    fillColor: Colors.grey[200] ?? Colors.grey,
+                    hintStyle: Theme.of(context).textTheme.labelMedium,
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      color: Colors.grey,
                     ),
-                  ],
-                  options: CarouselOptions(
-                    autoPlay: false,
-                    initialPage: 0,
-                    viewportFraction: 1,
-                    enableInfiniteScroll: true,
+                    border: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.grey[500] ?? Colors.grey),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                   ),
                 ),
-                const Positioned(
-                  bottom: 20,
-                  left: 35,
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFFABA9A9),
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFF1E1E1E),
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFFABA9A9),
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFFABA9A9),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              height: 45,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Row(
-                    children: [
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          elevation: MaterialStateProperty.all(0),
-                          backgroundColor: MaterialStateProperty.all(
-                            const Color(
-                              0xFF1C2023,
-                            ),
-                          ),
-                          fixedSize: MaterialStateProperty.all(
-                            const Size(125, 40),
-                          ),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: Center(
-                          child: Text(
-                            categories[index],
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelMedium!
-                                .copyWith(
-                                  fontSize: 12,
-                                  color: Colors.white,
-                                ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                },
-                itemCount: categories.length,
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    "New Arrival",
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontSize: 24,
-                          color: Colors.black,
+              const SizedBox(
+                height: 20,
+              ),
+              Stack(
+                children: [
+                  CarouselSlider(
+                    items: [
+                      HeroContainerWidget(
+                        image:
+                            // data[0].imageUrl ??
+                            "assets/pictures/hero/pixel.png",
+                        title:
+                            //  data[0].subtitle
+                            // ??
+                            "Get Pixel 7 and\nPixel 7 pro",
+                        subtitle: 'Full Speed ahead',
+                        color: Color(
+                          int.parse(
+                            // data[0].color ??
+                            // "0x"
+                            "FFF8E4DD",
+                            radix: 16,
+                          ),
                         ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15, right: 10),
-                  child: Text(
-                    "See All",
-                    style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFF979599),
-                        ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              height: 210,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: product.length,
-                  itemBuilder: (context, index) {
-                    final width = MediaQuery.of(context).size.width * 0.4;
-                    const height = 200.0;
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, RoutesName.detailScreen,
-                            arguments: {
-                              "product": product[index],
-                              "index": index,
-                            });
-                      },
-                      child: ProductCardWidget(
-                        image: product[index].images?[0] ??
-                            "assets/pictures/phoneProfile.png",
-                        title: product[index].title ??
-                            "Google Pixel 7 and Pixel 7 Pro",
-                        subtitle:
-                            product[index].description ?? "Full Speed Ahead",
-                        price: '${product[index].price}',
-                        color: GlobalColors.randomColor(index),
-                        height: height,
-                        width: width,
                       ),
+                    ],
+                    options: CarouselOptions(
+                      autoPlay: false,
+                      initialPage: 0,
+                      viewportFraction: 1,
+                      enableInfiniteScroll: true,
+                    ),
+                  ),
+                  const Positioned(
+                    bottom: 20,
+                    left: 35,
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: Color(0xFFABA9A9),
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: Color(0xFF1E1E1E),
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: Color(0xFFABA9A9),
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: Color(0xFFABA9A9),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 45,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      children: [
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(0),
+                            backgroundColor: MaterialStateProperty.all(
+                              const Color(
+                                0xFF1C2023,
+                              ),
+                            ),
+                            fixedSize: MaterialStateProperty.all(
+                              const Size(125, 40),
+                            ),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: Center(
+                            child: Text(
+                              categories[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .copyWith(
+                                    fontSize: 12,
+                                    color: Colors.white,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ],
                     );
-                  }),
-            ),
-          ],
+                  },
+                  itemCount: categories.length,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      "New Arrival",
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontSize: 24,
+                            color: Colors.black,
+                          ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15, right: 10),
+                    child: Text(
+                      "See All",
+                      style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF979599),
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 210,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: product.length,
+                    itemBuilder: (context, index) {
+                      final width = MediaQuery.of(context).size.width * 0.4;
+                      const height = 200.0;
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, RoutesName.detailScreen,
+                              arguments: {
+                                "product": product[index],
+                                "index": index,
+                              });
+                        },
+                        child: ProductCardWidget(
+                          image: product[index].images?[0] ??
+                              "assets/pictures/phoneProfile.png",
+                          title: product[index].title ??
+                              "Google Pixel 7 and Pixel 7 Pro",
+                          subtitle:
+                              product[index].description ?? "Full Speed Ahead",
+                          price: '${product[index].price}',
+                          color: GlobalColors.randomColor(index),
+                          height: height,
+                          width: width,
+                        ),
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
       ),
     );
