@@ -6,6 +6,9 @@ import '../../model/category.dart';
 import '../../model/product/product.dart';
 
 class PlatziApi {
+  final http.Client httpClient;
+  PlatziApi({http.Client? client}) : httpClient = client ?? http.Client();
+
   final String baseUrl = 'https://api.escuelajs.co/api/v1/';
 
   Future<List<Category>> getCategories() async {
