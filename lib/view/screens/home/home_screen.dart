@@ -24,18 +24,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
 
+  List<String> categories = [
+    "All Product",
+    "SmartPhones",
+    "Laptops",
+    "SmartWatches",
+    "SmartPhones",
+    "Laptops",
+    "SmartWatches"
+  ];
+
   @override
   void initState() {
-    intialCategories();
     super.initState();
-  }
-
-  Future<void> intialCategories() async {
-    final controller =
-        Provider.of<HomeScreenController>(context, listen: false);
-    controller.changeLoading();
-    await controller.getAllProducts();
-    controller.changeLoading();
   }
 
   final List<Product> product = [
@@ -364,8 +365,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPressed: () {},
                               child: Center(
                                 child: Text(
-                                  controller.categories[index].name ??
-                                      "Product",
+                                  categories[index],
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelMedium!
@@ -379,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         );
                       },
-                      itemCount: controller.categories.length,
+                      itemCount: categories.length,
                     ),
                   ),
                   Row(
@@ -447,6 +447,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   });
                             },
                             child: ProductCardWidget(
+                              id: product[index].id ?? 0,
                               image: product[index].images?[0] ??
                                   "assets/pictures/phoneProfile.png",
                               title: product[index].title ??

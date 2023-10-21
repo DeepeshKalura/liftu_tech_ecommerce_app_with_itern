@@ -11,7 +11,9 @@ class ProductGridWidget extends StatelessWidget {
     required this.price,
     this.width = 165,
     this.height = 200,
+    required this.id,
   });
+  final int id;
   final String image;
   final String title;
   final String subtitle;
@@ -50,11 +52,14 @@ class ProductGridWidget extends StatelessWidget {
           Center(
             // top: 0,
             // left: width * 0.25,
-            child: Image.network(
-              image,
-              height: height * 0.6,
-              width: width * 0.5,
-              fit: BoxFit.contain,
+            child: Hero(
+              tag: id,
+              child: Image.network(
+                image,
+                height: height * 0.6,
+                width: width * 0.5,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           Positioned(

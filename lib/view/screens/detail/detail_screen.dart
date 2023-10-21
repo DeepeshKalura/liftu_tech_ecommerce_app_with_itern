@@ -303,7 +303,10 @@ class DetailScreen extends StatelessWidget {
                       height: 50,
                       decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
-                          side: const BorderSide(width: 1, color: Colors.grey),
+                          side: const BorderSide(
+                            width: 1,
+                            color: Colors.grey,
+                          ),
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
@@ -365,9 +368,12 @@ class DetailScreen extends StatelessWidget {
                           ),
                         ),
                         padding: const EdgeInsets.only(left: 5),
-                        child: Image.asset(
-                          product.images?[0] ??
-                              "assets/pictures/phoneProfile.png",
+                        child: Hero(
+                          tag: product.id ?? 0,
+                          child: Image.asset(
+                            product.images?[0] ??
+                                "assets/pictures/phoneProfile.png",
+                          ),
                         ),
                       )
                     : Container(
@@ -378,10 +384,13 @@ class DetailScreen extends StatelessWidget {
                           ),
                         ),
                         padding: const EdgeInsets.only(left: 5),
-                        child: Image.network(
-                          product.images?[0] ??
-                              "https://i.imgur.com/5mPmJYO.jpeg",
-                          width: MediaQuery.of(context).size.width / 2 - 25,
+                        child: Hero(
+                          tag: product.id ?? 0,
+                          child: Image.network(
+                            product.images?[0] ??
+                                "https://i.imgur.com/5mPmJYO.jpeg",
+                            width: MediaQuery.of(context).size.width / 2 - 25,
+                          ),
                         ),
                       ),
               ),

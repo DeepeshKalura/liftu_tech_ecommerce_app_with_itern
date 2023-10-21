@@ -11,7 +11,9 @@ class ProductCardWidget extends StatelessWidget {
     required this.price,
     this.width = 165,
     this.height = 200,
+    required this.id,
   });
+  final int id;
   final String image;
   final String title;
   final String subtitle;
@@ -50,8 +52,11 @@ class ProductCardWidget extends StatelessWidget {
           Positioned(
             top: 0,
             left: width * 0.25,
-            child: Image.asset(
-              image,
+            child: Hero(
+              tag: id,
+              child: Image.asset(
+                image,
+              ),
             ),
           ),
           Positioned(

@@ -67,6 +67,7 @@ class ProductListScreen extends StatelessWidget {
                       );
                     },
                     child: ProductGridWidget(
+                      id: prdList[index].id ?? 0,
                       color: GlobalColors.randomColor(index),
                       image: prdList[index].images?[0] ??
                           'https://i.imgur.com/5mPmJYO.jpeg',
